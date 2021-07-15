@@ -4,12 +4,28 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
+ranXarr = []
+ranYarr = []
+for i in range(50):
+    ranXarr.append(random.randrange(0,600,1))
+    ranYarr.append(random.randrange(0,600,1))
+
 
 def draw_points(x, y):
     glPointSize(1) #pixel size. by default 1 thake
     glBegin(GL_POINTS)
     glVertex2f(x,y) #jekhane show korbe pixel
     glEnd()
+
+def drawPixels50Random():
+    glPointSize(5)
+    glBegin(GL_POINTS)
+    for i in range(50):
+        x =  ranXarr[i]
+        y =  ranYarr[i]
+        glVertex2f(x,y)
+    glEnd()
+
 
 
 def iterate():
@@ -30,7 +46,8 @@ def showScreen():
         x = random.randint(10,400)
         y = random.randint(10,400)
         #print(i)
-        draw_points(x,y)
+        #draw_points(x,y)
+        drawPixels50Random()
     glutSwapBuffers()
 
 
